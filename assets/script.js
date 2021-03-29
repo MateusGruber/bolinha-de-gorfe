@@ -10,6 +10,7 @@ import { Interaction } from 'three.interaction';
     - Organize this mess 
     - Create shadow
     - Insert shake inside the canvas
+    - Rotation by mouse interaction
 */
 
 const textureLoader = new THREE.TextureLoader()
@@ -109,22 +110,26 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 const interaction = new Interaction(renderer, scene, camera);
 
-var plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10);
-var mouse = new THREE.Vector2();
-var pointOfIntersection = new THREE.Vector3();
-var raycaster = new THREE.Raycaster();
+// var plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10);
+// var mouse = new THREE.Vector2();
+// var pointOfIntersection = new THREE.Vector3();
+// var raycaster = new THREE.Raycaster();
 
-const onMouseMove = e => {
-    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;
-    raycaster.setFromCamera(mouse, camera);
-    raycaster.ray.intersectPlane(plane, pointOfIntersection);
-    sphere.lookAt(pointOfIntersection);
-}
+// const onMouseMove = e => {
+//     mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+//     mouse.y = - (e.clientY / window.innerHeight) * 2 + 1;
+//     raycaster.setFromCamera(mouse, camera);
+//     raycaster.ray.intersectPlane(plane, pointOfIntersection);
+//     sphere.lookAt(pointOfIntersection);
+// }
 
-canvas.addEventListener('mousemove', onMouseMove, false);
+// canvas.addEventListener('mousemove', onMouseMove, false);
+
+const clock = new THREE.Clock()
 
 const tick = () => {
+    const elapsedTime = clock.getElapsedTime()
+    sphere.rotation.y = .5 * elapsedTime
     renderer.render(scene, camera)
     window.requestAnimationFrame(tick)
 }
