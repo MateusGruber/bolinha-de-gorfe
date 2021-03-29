@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 
-const gui = new dat.GUI();
+// const gui = new dat.GUI();
 
 const textureLoader = new THREE.TextureLoader()
 
