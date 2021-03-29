@@ -71,11 +71,6 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 const clock = new THREE.Clock()
 
-gui.add(frontalPointLight.position, 'y').min(-3).max(100).step(0.01)
-gui.add(frontalPointLight.position, 'x').min(-3).max(100).step(0.01)
-gui.add(frontalPointLight.position, 'z').min(-3).max(10000).step(0.01)
-gui.add(frontalPointLight, 'intensity').min(0).max(10).step(0.01)
-
 const tick = () =>
 {
 
